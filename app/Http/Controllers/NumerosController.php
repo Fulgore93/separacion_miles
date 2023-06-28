@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class NumerosController extends Controller
 {
     public function index(){
-        return view('index.blade.php');
+        return view('index');
     }
 
     public function list(){
@@ -18,7 +18,7 @@ class NumerosController extends Controller
     }
 
     // public function create(){
-    //     return view('index.blade.php');
+    //     return view('index');
     // }
 
     public function store(NumerosStore $request){
@@ -33,6 +33,6 @@ class NumerosController extends Controller
         $Numero->numero_double2 = $request->numero_double2;
         $Numero->save();
 
-        return view('index.blade.php');
+        return view('index');
     }
 }
