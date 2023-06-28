@@ -10,8 +10,18 @@
    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="container mx-auto">
-   <h1 class="text-xl">Separador de miles</h1>
+<body class="container mx-auto mt-8">
+   <h1 class="text-xl mb-4">Separador de miles</h1>
+
+   <div class="grid gap-2 max-w-xl">
+      <input class="border border-dark px-2 py-1 focus:outline-none input-mask" data-thousands-separator='.' data-decimal-separator=',' type="text" name="">
+      <input class="border border-dark px-2 py-1 focus:outline-none input-mask" data-thousands-separator='.' data-decimal-separator=',' type="text" name="">
+      <input class="border border-dark px-2 py-1 focus:outline-none input-mask" data-thousands-separator='.' data-decimal-separator=',' type="text" name="">
+      <input class="border border-dark px-2 py-1 focus:outline-none input-mask" data-thousands-separator='.' data-decimal-separator=',' type="text" name="">
+   </div>
+
+   <script src="{{ asset('assets/imask.js') }}"></script>
+   <script src="{{ asset('assets/scripts.js') }}"></script>
 </body>
 
 </html>
