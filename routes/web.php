@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NumerosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('/numero', [NumerosController::class, 'index'])->name('index');
+Route::get('/numero/list', [NumerosController::class, 'list'])->name('list');
+Route::post('/numero/store', [NumerosController::class, 'store'])->name('store');
+
