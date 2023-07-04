@@ -384,7 +384,7 @@ $(() => {
             
             setTimeout(() => {
                 const inputs = row.querySelectorAll('.input-mask input[type="text"]');
-                const inputMasked = inputs.filter(input => input.classList.contains('input-mask'));
+                // const inputMasked = inputs.filter(input => input.classList.contains('input-mask'));
                
                 console.log(inputs);
                 
