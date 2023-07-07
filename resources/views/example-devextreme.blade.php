@@ -12,9 +12,6 @@
    <!-- DevExtreme theme -->
    <link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/23.1.3/css/dx.light.css">
 
-   <!-- DevExtreme library -->
-   <script type="text/javascript" src="https://cdn3.devexpress.com/jslib/23.1.3/js/dx.all.js"></script>
-
    @vite(['resources/css/app.css', 'resources/js/app.js'])
    <script src="https://cdn.tailwindcss.com"></script>
 
@@ -25,6 +22,11 @@
    <div class="container flex mx-auto">
       <div id="gridContainer"></div>
    </div>
+
+   <!-- DevExtreme library -->
+   <script src="https://cdn3.devexpress.com/jslib/23.1.3/js/dx.all.js"></script>
+
+   <script src="https://cdn3.devexpress.com/jslib/23.1.3/js/localization/dx.messages.es.js"></script>
 
    <script src="{{ asset('assets/imask.js') }}"></script>
    <script src="{{ asset('assets/scripts.js') }}"></script>

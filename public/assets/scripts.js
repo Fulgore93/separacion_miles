@@ -1,6 +1,16 @@
 const createIMask = (input) => {
 
     /**
+     * procedemos a setear el valor de mask, en el input que se encuentra oculto
+     **/
+    const setInputValue = (input) => {
+        const reference = input.getAttribute('data-input-value');
+
+        if (!reference) return;
+        if (reference) return document.querySelector(reference).value = mask.typedValue;
+    }
+
+    /**
      * creamos una funcion que controle ciertos errores
      * de esta forma limitamos los separadores a ciertos simbolos
      **/
@@ -31,20 +41,19 @@ const createIMask = (input) => {
 
     const mask = IMask(input, {
         mask: Number,
-        scale: 2,
+        scale: parseInt(config.scale),
         thousandsSeparator: config.thousandsSeparator,
         radix: config.decimalSeparator,
         // min: 0,
         // max: 100
     }).on("complete", function (event) {
 
-        const input = event.target;
-        const reference = input.getAttribute('data-input-value');
+        if (!event) return;
 
-        if (!reference) return;
+        setInputValue(event.target);
+    })
 
-        document.querySelector(reference).value = mask.typedValue;
-    });
+    return { mask, setInputValue };
 }
 
 window.addEventListener('load', () => {
@@ -52,11 +61,23 @@ window.addEventListener('load', () => {
 
     inputs && inputs.forEach(input => createIMask(input));
 
+    /* inputs && inputs.forEach(input => {
+
+        // if (!input.classList.contains('input-calculator')) return;
+
+        createIMask(input);
+
+
+        // input.addEventListener('change', function (e) {
+        //     document.querySelector('.input-test').value = mask.typedValue * 2
+        // })
+    }); */
+
     /**
      * de esta forma inicializamos la libreria
      * en base a elementos creados dinamicamente
      **/
-    
+
     // const newInput = document.createElement('input');
 
     // newInput.type = 'text';
@@ -70,7 +91,7 @@ window.addEventListener('load', () => {
     // newInputValue.classList.add('numero-3');
 
     // createIMask(newInput);
-    
+
     // document.querySelector('.custom-input').append(newInput);
     // document.querySelector('.custom-input').append(newInputValue);
 

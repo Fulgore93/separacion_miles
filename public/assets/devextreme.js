@@ -2,7 +2,7 @@ const employees = [{
     ID: 1,
     FirstName: 'John',
     LastName: 'Heart',
-    Prefix: 20,
+    Prefix: 20.55,
     Position: 'CEO',
     BirthDate: '1964/03/16',
     HireDate: '1995/01/15',
@@ -311,12 +311,7 @@ const states = [{
 
 
 $(() => {
-    function logEvent(eventName) {
-        const logList = $('#events ul');
-        const newItem = $('<li>', { text: eventName });
-
-        logList.prepend(newItem);
-    }
+    DevExpress.localization.locale('es');
 
     $('#gridContainer').dxDataGrid({
         dataSource: employees,
@@ -335,12 +330,14 @@ $(() => {
             {
                 dataField: 'Prefix',
                 caption: 'Age',
-                // cellTemplate: function (container, cellInfo) {
-                //     console.log(container, cellInfo)
-                //     const valueDiv = $("<div>").text(cellInfo.value);
-
-                //     return valueDiv;
-                // }
+                dataType: "number",
+                format : "#,##0.###",
+                editorOptions: {
+                    format: {
+                        type: "fixedPoint",
+                        precision: 2,
+                    },
+                },
             },
             'FirstName',
             'LastName', {
@@ -363,71 +360,8 @@ $(() => {
                 width: 125,
             },
         ],
-        onEditingStart(event) {
-            logEvent('EditingStart - 1');
-        },
-        // onCellPrepared(event) {
-
-        //     console.log(event)
-
-        // },
-        onRowPrepared(event) {
-
-            // if (event.rowType !== "data") return;
-
-            // if (event.rowType === "data" && event.column.name == 'descuento') {
-            //     // event.cellElement.css("background-color", "#91C84C");
-            // }    
-
-            const row = event.rowElement[0];
-            // const rows = event.rowElement.findAll('input[type="text"]');
-            
-            setTimeout(() => {
-                const inputs = row.querySelectorAll('.input-mask input[type="text"]');
-                // const inputMasked = inputs.filter(input => input.classList.contains('input-mask'));
-               
-                console.log(inputs);
-                
-            }, 100);
-            // console.log(rows);
-            // cells.forEach(aux => {
-
-            //     console.log(aux.cellElement)
-            // });
-        },
-        onInitNewRow() {
-            logEvent('InitNewRow');
-        },
-        onRowInserting(event) {
-            logEvent('RowInserting');
-        },
-        onRowInserted() {
-            logEvent('RowInserted');
-        },
-        onRowUpdating() {
-            logEvent('RowUpdating');
-        },
-        onRowUpdated(event) {
-            logEvent('RowUpdated');
-        },
-        onRowRemoving() {
-            logEvent('RowRemoving');
-        },
-        onRowRemoved() {
-            logEvent('RowRemoved');
-        },
-        onSaving() {
-            logEvent('Saving - 1');
-        },
         onSaved(data) {
-            // console.log(data);
-            logEvent('Saved - 1');
-        },
-        onEditCanceling() {
-            logEvent('EditCanceling');
-        },
-        onEditCanceled() {
-            logEvent('EditCanceled');
+            console.log(data);
         },
     });
 

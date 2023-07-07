@@ -22,14 +22,10 @@ class NumerosStore extends FormRequest
     public function rules(): array
     {
         return [           
-            'numero_string1'    => 'nullable|numeric|decimal:0,2|between:1,999999999',
-            'numero_string2'    => 'nullable|numeric|decimal:0,2|between:1,999999999',
-            'numero_float1'     => 'nullable|numeric|decimal:0,2|between:1,999999999',
-            'numero_float2'     => 'nullable|numeric|decimal:0,2|between:1,999999999',
-            'numero_int1'       => 'nullable|numeric|between:1,999999999',
-            'numero_int2'       => 'nullable|numeric|between:1,999999999',
-            'numero_double1'    => 'nullable|numeric|decimal:0,2|between:1,999999999',
-            'numero_double2'    => 'nullable|numeric|decimal:0,2|between:1,999999999',
+            'numero_1'    => 'nullable|numeric|decimal:0,2|between:1,999999999',
+            'numero_2'    => 'nullable|numeric|decimal:0,2|between:1,999999999',
+            // 'numero_1'       => 'nullable|numeric|integer|between:1,999999999',
+            // 'numero_2'       => 'nullable|numeric|integer|between:1,999999999',
         ];
     }
 }

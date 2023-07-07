@@ -14,15 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', fn () => view('index'));
+Route::get('/example-1', [NumerosController::class, 'example1'])->name('example.1');
+Route::get('/example-2', [NumerosController::class, 'example2'])->name('example.2');
 
 Route::get('/example-devextreme', function () {
     return view('example-devextreme');
-})->name('store');
+});
 
 Route::get('/numero', [NumerosController::class, 'index'])->name('index');
 Route::get('/numero/list', [NumerosController::class, 'list'])->name('list');
 Route::post('/numero/store', [NumerosController::class, 'store'])->name('store');
-
