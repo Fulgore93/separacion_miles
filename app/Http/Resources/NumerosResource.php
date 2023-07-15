@@ -15,6 +15,7 @@ class NumerosResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id'                => $this->id,
             'numero_string1'    => $this->numero_string1,
             'numero_string2'    => $this->numero_string2,
             'numero_float1'     => $this->numero_float1,

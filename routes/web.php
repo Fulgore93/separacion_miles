@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', fn () => view('index'));
-Route::get('/example-1', [NumerosController::class, 'example1'])->name('example.1');
+Route::get('/', fn () => view('index'))->name('example.1');
 Route::get('/example-2', [NumerosController::class, 'example2'])->name('example.2');
+Route::get('/example-3', fn () => view('example-3'))->name('example.3');
+Route::get('/example-4', [NumerosController::class, 'example4'])->name('example.4');
+Route::get('/example-5', fn () => view('example-5'))->name('example.5');
 
 Route::get('/example-devextreme', function () {
     return view('example-devextreme');

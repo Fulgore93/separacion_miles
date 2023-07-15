@@ -59,7 +59,7 @@ const createIMask = (input) => {
 window.addEventListener('load', () => {
     const inputs = document.querySelectorAll('.input-mask');
 
-    inputs && inputs.forEach(input => createIMask(input));
+    if (inputs.length >= 1) inputs.forEach(input => createIMask(input));
 
     /* inputs && inputs.forEach(input => {
 

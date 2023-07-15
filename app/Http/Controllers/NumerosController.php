@@ -13,16 +13,18 @@ class NumerosController extends Controller
         return view('index');
     }
 
-    public function example1()
+    public function example2()
     {
         $numero = Numero::first();
 
-        return view('example-1', compact('numero'));
+        return view('example-2', compact('numero'));
     }
 
-    public function example2()
+    public function example4()
     {
-        return view('example-2');
+        $numeros = Numero::take(5)->latest()->get();
+
+        return view('example-4', compact('numeros'));
     }
 
     public function list()
