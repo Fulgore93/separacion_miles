@@ -28,8 +28,8 @@ const createIMask = (input) => {
 
     const config = {
         scale: input.getAttribute('data-scale') ?? 2,
-        thousandsSeparator: input.getAttribute('data-thousands-separator')?.trim() ?? '.',
         decimalSeparator: input.getAttribute('data-decimal-separator')?.trim() ?? ',',
+        thousandsSeparator: input.getAttribute('data-thousands-separator')?.trim() ?? '.',
     }
 
     validateErrorSeparator(config.thousandsSeparator, config.decimalSeparator);
@@ -38,6 +38,10 @@ const createIMask = (input) => {
      * inicializamos la configuracion necesaria para manipular
      * los valores ingresados en el input
      **/
+
+    if (config.decimalSeparator == ',') {
+        input.value = input.value.replace('.', ',');
+    }
 
     const mask = IMask(input, {
         mask: Number,
@@ -60,18 +64,6 @@ window.addEventListener('load', () => {
     const inputs = document.querySelectorAll('.input-mask');
 
     if (inputs.length >= 1) inputs.forEach(input => createIMask(input));
-
-    /* inputs && inputs.forEach(input => {
-
-        // if (!input.classList.contains('input-calculator')) return;
-
-        createIMask(input);
-
-
-        // input.addEventListener('change', function (e) {
-        //     document.querySelector('.input-test').value = mask.typedValue * 2
-        // })
-    }); */
 
     /**
      * de esta forma inicializamos la libreria

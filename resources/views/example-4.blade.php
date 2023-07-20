@@ -20,9 +20,9 @@
                <div class="flex">
                   <span>String:</span>
                   <div class="flex items-center gap-1 font-bold text-gray-500">
-                     <span class="ml-1">{{ $numero->numero_string2 }} </span>
+                     <span class="ml-1">{{ $numero->numero_string1 }} </span>
                      <span class="text-xs font-light">-></span>
-                     <span>{{ number_format($numero->numero_string2, 2, ',', '.') }}</span>
+                     <span>{{ number_format($numero->numero_string1, 2, ',', '.') }}</span>
                   </div>
                </div>
                <div class="flex">

@@ -35,45 +35,15 @@ $(() => {
             },
             insert: function (values) {
                 console.log('insert', values)
-                /* var deferred = $.Deferred();
-                $.ajax({
-                    url: "https://mydomain.com/MyDataService/",
-                    method: "POST",
-                    data: JSON.stringify(values)
-                })
-                .done(deferred.resolve)
-                .fail(function (e) {
-                    deferred.reject("Insertion failed");
-                });
-                return deferred.promise(); */
             },
             remove: function (key) {
                 console.log('remove')
-                /* var deferred = $.Deferred();
-                $.ajax({
-                    url: "https://mydomain.com/MyDataService/" + encodeURIComponent(key),
-                    method: "DELETE"
-                })
-                .done(deferred.resolve)
-                .fail(function (e) {
-                    deferred.reject("Deletion failed");
-                };
-                return deferred.promise(); */
             },
             update: function (key, values) {
-                console.log('update')
-                /* var deferred = $.Deferred();
-                $.ajax({
-                    url: "https://mydomain.com/MyDataService/" + encodeURIComponent(key),
-                    method: "PUT",
-                    data: JSON.stringify(values)
-                })
-                .done(deferred.resolve)
-                .fail(function (e) {
-                    deferred.reject("Update failed");
-                };
-                return deferred.promise(); */
-            }
+                //actualizamos el registro en DB, posteriormente la devextreme recarga la grilla
+                //realizando una nueva peticio, es aqui donde veremos el dato actualizado
+                return true;
+            },
         }),
         keyExpr: 'id',
         showBorders: true,
