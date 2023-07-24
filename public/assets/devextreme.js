@@ -1,5 +1,4 @@
 $(() => {
-
     /**
      * primero seteamos la localizacion, esto es super util a la hora de formatear los numeros
      * ya que mediante esta configuracion, automaticamente el separador de miles se transformara en punto 
@@ -29,21 +28,35 @@ $(() => {
 
     $(container).dxDataGrid({
         dataSource: new DevExpress.data.CustomStore({
+            key: "id",
             load: function () {
                 return $.getJSON(container.getAttribute('data-link'))
                     .fail(function () { throw "Data loading error" });
             },
             insert: function (values) {
-                console.log('insert', values)
+                return sendRequest(container.getAttribute('data-store'), "POST", {
+                    numero_string1: values.numero_string1,
+                    numero_float1: values.numero_float1,
+                    numero_int1: values.numero_int1,
+                    numero_double1: values.numero_double1
+                }); 
             },
             remove: function (key) {
-                console.log('remove')
+                return sendRequest(container.getAttribute('data-delete'), "DELETE", {
+                    id: key
+                });
             },
             update: function (key, values) {
                 //actualizamos el registro en DB, posteriormente la devextreme recarga la grilla
                 //realizando una nueva peticio, es aqui donde veremos el dato actualizado
-                return true;
-            },
+                return sendRequest(container.getAttribute('data-update'), "PUT", {
+                    id: key,
+                    numero_string1: values.numero_string1,
+                    numero_float1: values.numero_float1,
+                    numero_int1: values.numero_int1,
+                    numero_double1: values.numero_double1
+                });    
+            }, 
         }),
         keyExpr: 'id',
         showBorders: true,
@@ -111,3 +124,24 @@ $(() => {
         },
     });
 });
+
+function sendRequest(url, method, data) { // función para solicitudes de devxtreme
+
+    var d = $.Deferred();
+    method = method || "GET";
+    $.ajax(url, {
+        method: method || "GET",
+        data: data,
+        cache: false,
+        xhrFields: {
+            withCredentials: true
+        }
+    }).done(function (result) {
+        /* d.resolve(method === "GET" ? result.data : result); */
+        d.resolve(result);
+    }).fail(function (xhr) {
+        console.log('Error al obtener los datos');
+        d.reject(xhr.responseJSON ? xhr.responseJSON.Message : xhr.statusText);
+    });
+    return d.promise();
+}

@@ -27,3 +27,6 @@ Route::get('/example-devextreme', function () {
 Route::get('/numero', [NumerosController::class, 'index'])->name('index');
 Route::get('/numero/list', [NumerosController::class, 'list'])->name('list');
 Route::post('/numero/store', [NumerosController::class, 'store'])->name('store');
+Route::post('/numero/tableStore', [NumerosController::class, 'tableStore'])->name('tableStore');
+Route::put('/numero/tableUpdate', [NumerosController::class, 'tableUpdate'])->name('tableUpdate');
+Route::delete('/numero/tableDelete', [NumerosController::class, 'tableDelete'])->name('tableDelete');

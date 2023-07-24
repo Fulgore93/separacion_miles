@@ -11,14 +11,23 @@
    <hr class="mb-10">
 
    <div class="flex flex-col gap-8">
-      <div id="gridContainer" data-link="{{ route('list') }}"></div>
+      <div id="gridContainer" data-link="{{ route('list') }}" data-store="{{ route('tableStore') }}" data-update="{{ route('tableUpdate') }}" data-delete="{{ route('tableDelete') }}"></div>
    </div>
 @endsection
 
 @push('scripts')
+
    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
    <script src="https://cdn3.devexpress.com/jslib/23.1.3/js/dx.all.js"></script>
    <script src="https://cdn3.devexpress.com/jslib/23.1.3/js/localization/dx.messages.es.js"></script>
+
+   <script>
+      $.ajaxSetup({ 
+         headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+         }
+      });
+   </script>
 
    <script src="{{ asset('assets/devextreme.js') }}"></script>
 @endpush
