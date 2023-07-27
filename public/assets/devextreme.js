@@ -4,8 +4,7 @@ $(() => {
      * ya que mediante esta configuracion, automaticamente el separador de miles se transformara en punto 
      * y el de decimal en coma.
      */
-
-    DevExpress.localization.locale('es');
+    DevExpress.localization.locale(navigator.language);
 
     /**
      * 
