@@ -28,8 +28,8 @@
 
    <script src="https://cdn3.devexpress.com/jslib/23.1.3/js/localization/dx.messages.es.js"></script>
 
-   <script src="{{ asset('assets/imask.js') }}"></script>
-   <script src="{{ asset('assets/scripts.js') }}"></script>
+   <script src="{{ asset('assets/separador-miles/imask.js') }}"></script>
+   <script src="{{ asset('assets/separador-miles/script.js') }}"></script>
    <script src="{{ asset('assets/devextreme.js') }}"></script>
 </body>
 

@@ -22,8 +22,8 @@ Para ver los ejemplos de uso, puedes hacer lo siguiente:
 ## Para conocer mas acerca de los ejemplos
 Cada pagina, tiene un pequeña descripcion, la cual sera util para que puedas entender lo que realiza cada formulario.
 
-En dado caso que necesites reutilizar el codigo, lo minimo necesario, sera copiar `scripts.js` y `imask.js`,
-esto lo encontraras en la ruta `public/assets`.
+En dado caso que necesites reutilizar el codigo, lo minimo necesario, sera copiar `script.js` y `imask.js`,
+esto lo encontraras en la ruta `public/assets/separador-miles`.
 
 ## Como utilizarlo:
 En dado caso que requieras utilizar la libreria `imask.js`, deberas tener en cuenta que se ha limitado su funcionalidad para aceptar ciertos caracteres para los decimales y el separador de miles.
@@ -41,7 +41,7 @@ Para que el valor ingresado en nuestro input principal, se vea reflejado en nues
 
 
 ### Input hidden
-Es muy necesario, ingresar un input tipo `hidden`, el cual sera utilizado para almacenar el valor limpio (valido para realizar calculos en PHP,JS,DB), asumiendo que es un numero aceptado dentro de diferentes lenguajes, se podria decir que este valor es el que se enviara el backend.
+Es muy necesario, ingresar un input tipo `hidden`, el cual sera utilizado para almacenar el valor limpio (valido para realizar calculos en PHP,JS,DB), se podria decir que este valor es el que se enviara el backend.
 
 
 ```html
@@ -66,6 +66,79 @@ Es muy necesario, ingresar un input tipo `hidden`, el cual sera utilizado para a
     name="numero_1" 
 >
 ```
+
+### Devextreme
+
+Dentro de este apartado, existe una funcionalidad en la devextreme, que nos permite agregar, editar o simplemente, mostrar numeros en diferentes formator, en este caso utilizaremos el separado de miles como `.` y el decimal como `,`.
+
+Lo primero que necesitamos hacer, es importar la libreria, tanto css como js.
+
+```html
+
+<link href="https://cdn3.devexpress.com/jslib/23.1.3/css/dx.light.css">
+
+<body>
+
+    ...
+
+   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+   <script src="https://cdn3.devexpress.com/jslib/23.1.3/js/dx.all.js"></script>
+   <script src="https://cdn3.devexpress.com/jslib/23.1.3/js/localization/dx.messages.es.js"></script>
+
+</body>
+```
+Posteriormente , debemos cambiar el idioma de la libreria a español, para lograr esto, debemos agregar la siguiente linea de codigo.
+
+```js
+DevExpress.localization.locale(navigator.language);
+```
+Ahora lo que necesitaremos es definir ciertos parametros dentro de las columnas,
+en este ejemplo, el campo `salario` el cual es numerico, tiene un formato establecido y una propiedad `editorOptions`
+en dado caso que se requiera editar directamente desde la tabla.
+
+Luego de editar al gun campo o crear algun registro, donde el campo numerico se vea afectado, solo debemos enviar el dato directamente en la peticion, ya que este mismo se encuenta limpio, osea es un numero validor, independiente de como se vea en la tabla.
+
+```js
+$('#gridContainer').dxDataGrid({
+
+    //solo si requiere la modificacion o 
+    //creacion de registro mediante la devextreme
+    dataSource: new DevExpress.data.CustomStore({
+        key: "id",
+        load: function () {...},
+        insert: function (values) {
+            return sendRequest(url, "POST", {
+                nombre: values.nombre,
+                salario: values.salario,
+            }); 
+        },
+        remove: function (key) {...},
+        update: function (key, values) {...}, 
+    }),
+    ...
+    columns: [
+        {
+            dataField: 'nombre',
+            caption: 'Nombre',
+            dataType: "text",
+        },
+        {
+            dataField: 'salario',
+            caption: 'Salario',
+            dataType: "number",
+            format: "#,##0.##",
+            editorOptions: {
+                format: {
+                    type: "fixedPoint",
+                    precision: 2,
+                },
+            },
+        },
+    ],
+});
+
+```
+
 
 # Referencias
 - https://imask.js.org/

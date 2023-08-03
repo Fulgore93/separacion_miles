@@ -42,8 +42,8 @@
    </div>
 
    @stack('scripts')
-   <script src="{{ asset('assets/imask.js') }}"></script>
-   <script src="{{ asset('assets/scripts.js') }}"></script>
+   <script src="{{ asset('assets/separador-miles/imask.js') }}"></script>
+   <script src="{{ asset('assets/separador-miles/script.js') }}"></script>
 </body>
 
 </html>
