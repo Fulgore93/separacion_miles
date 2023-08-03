@@ -1,7 +1,7 @@
 # laravel_10_separador_de_miles_y_decimales 
  
 ## Introducción
-Proyecto laravel 10 con libreria MaskJs y Devextreme datagrid.
+Proyecto laravel 10 con librería MaskJs y Devextreme datagrid.
 
 ## Instalación
 Para instalar esto, debes seguir las siguientes indicaciones
@@ -20,20 +20,20 @@ Para ver los ejemplos de uso, puedes hacer lo siguiente:
 
 # Instrucciones
 ## Para conocer mas acerca de los ejemplos
-Cada pagina, tiene un pequeña descripcion, la cual sera util para que puedas entender lo que realiza cada formulario.
+Cada pagina, tiene un pequeña descripción, la cual sera util para que puedas entender lo que realiza cada formulario.
 
-En dado caso que necesites reutilizar el codigo, lo minimo necesario, sera copiar `script.js` y `imask.js`,
+En dado caso que necesites reutilizar el código, lo mínimo necesario, sera copiar `script.js` y `imask.js`,
 esto lo encontraras en la ruta `public/assets/separador-miles`.
 
 ## Como utilizarlo:
-En dado caso que requieras utilizar la libreria `imask.js`, deberas tener en cuenta que se ha limitado su funcionalidad para aceptar ciertos caracteres para los decimales y el separador de miles.
+En dado caso que requieras utilizar la librería `imask.js`, deberás tener en cuenta que se ha limitado su funcionalidad para aceptar ciertos caracteres para los decimales y el separador de miles.
 
-En este ejemplo, veremos como vincular la libreria en un input, el cual acepta numeros, donde el separador de miles es un punto, y el separador de decimal, es una coma.
+En este ejemplo, veremos como vincular la librería en un input, el cual acepta números, donde el separador de miles es un punto, y el separador de decimal, es una coma.
 
 Si necesitas cargar un valor previo, puedes utilizar el atributo value sin problema alguno.
 
 ### Input mask
-Para crear un input con un formateador de numeros, debemos asumir que debe ser de tipo `text` y asignar la clase `input-mask`, esto por defecto, trae el separador de miles con punto `.` y el de decimales con coma `,`.
+Para crear un input con un formateador de números, debemos asumir que debe ser de tipo `text` y asignar la clase `input-mask`, esto por defecto, trae el separador de miles con punto `.` y el de decimales con coma `,`.
 
 En dado caso que requieras invertir los valores, puedes utilizar los atributos `data-thousands-separator` (miles) y `data-decimal-separator` (decimales) para intercambiar entre coma y punto.
 
@@ -41,7 +41,7 @@ Para que el valor ingresado en nuestro input principal, se vea reflejado en nues
 
 
 ### Input hidden
-Es muy necesario, ingresar un input tipo `hidden`, el cual sera utilizado para almacenar el valor limpio (valido para realizar calculos en PHP,JS,DB), se podria decir que este valor es el que se enviara el backend.
+Es muy necesario, ingresar un input tipo `hidden`, el cual sera utilizado para almacenar el valor limpio (valido para realizar cálculos en PHP,JS,DB), se podría decir que este valor es el que se enviara el backend.
 
 
 ```html
@@ -69,9 +69,9 @@ Es muy necesario, ingresar un input tipo `hidden`, el cual sera utilizado para a
 
 ### Devextreme
 
-Dentro de este apartado, existe una funcionalidad en la devextreme, que nos permite agregar, editar o simplemente, mostrar numeros en diferentes formator, en este caso utilizaremos el separado de miles como `.` y el decimal como `,`.
+Dentro de este apartado, existe una funcionalidad en la devextreme, que nos permite agregar, editar o simplemente, mostrar números en diferentes formatos, en este caso utilizaremos el separado de miles como `.` y el decimal como `,`.
 
-Lo primero que necesitamos hacer, es importar la libreria, tanto css como js.
+Lo primero que necesitamos hacer, es importar la librería, tanto css como js.
 
 ```html
 
@@ -87,16 +87,16 @@ Lo primero que necesitamos hacer, es importar la libreria, tanto css como js.
 
 </body>
 ```
-Posteriormente , debemos cambiar el idioma de la libreria a español, para lograr esto, debemos agregar la siguiente linea de codigo.
+Posteriormente , debemos cambiar el idioma de la librería a español, para lograr esto, debemos agregar la siguiente linea de código.
 
 ```js
 DevExpress.localization.locale(navigator.language);
 ```
-Ahora lo que necesitaremos es definir ciertos parametros dentro de las columnas,
-en este ejemplo, el campo `salario` el cual es numerico, tiene un formato establecido y una propiedad `editorOptions`
+Ahora lo que necesitaremos es definir ciertos parámetros dentro de las columnas,
+en este ejemplo, el campo `salario` el cual es numérico, tiene un formato establecido y una propiedad `editorOptions`
 en dado caso que se requiera editar directamente desde la tabla.
 
-Luego de editar al gun campo o crear algun registro, donde el campo numerico se vea afectado, solo debemos enviar el dato directamente en la peticion, ya que este mismo se encuenta limpio, osea es un numero validor, independiente de como se vea en la tabla.
+Luego de editar al gun campo o crear algún registro, donde el campo numérico se vea afectado, solo debemos enviar el dato directamente en la petición, ya que este mismo se encuentra limpio, osea es un numero valido, independiente de como se vea en la tabla.
 
 ```js
 $('#gridContainer').dxDataGrid({
@@ -146,6 +146,6 @@ $('#gridContainer').dxDataGrid({
 
 ## Bitácora
 
-Fecha | Descripcion | Acciones
+Fecha | Descripción | Acciones
 | :-- | :-: | :-:
 18-05-2022 18:11 | instalación de proyecto | Ejecutar _composer install_, _php artisan migrate:fresh_ y npm run dev (_opcional_)
